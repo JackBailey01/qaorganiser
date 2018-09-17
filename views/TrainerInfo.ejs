@@ -1,0 +1,87 @@
+<html lang="en">
+<head>
+    <title>Trainers</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/contact_modal.js"></script>
+</head>
+<body>
+<div class="modal fade" id="addTrainer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Trainer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/TrainerInfo" method="post">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Trainer ID:</label>
+                        <input type="text" class="form-control" name="Trainer ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject-text" class="col-form-label">Trainer Name:</label>
+                        <input type="text" class="form-control" name="Trainer Name">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+
+        <ul class="nav navbar-nav">
+            <li><a href="/inbox">Schedule</a></li>
+            <li class="active"><a href="/trainers">Trainers</a></li>
+            <li><a href="/skills">Skills</a></li>
+            <li><a href="/rooms">Rooms</a></li>
+            <li><a href="/groups">Groups</a></li>
+        </ul>
+        <!--<form action="/inbox/logout">
+            <div align="right"><button type="submit" class="btn btn-warning"  method="GET" >logout</button></div>
+        </form>-->
+    </div>
+</nav>
+<div class="col-sm-1 content">
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTrainer" >Add</button>
+        </li>
+    </ul>
+</div>
+
+<div class="col-sm-10 content">
+    <table class="table table-hover" data-link="row" id="tableID">
+        <thead class="black white-text">
+        <tr>
+            <th>Trainer ID</th>
+            <th>Name</th>
+        </tr>
+        <tr>
+            <% for(var x=0; x<result.length; x++){ %>
+            <tr>
+                <td> <%= result[x].Tid%> </td>
+                <td> <%= result[x].Name%> </td>
+            </tr>
+            <% } %>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+</body>
+<script>
+</script>
+</html>
