@@ -7,6 +7,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/contact_modal.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" ></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" ></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js" ></script>
 </head>
 <body>
 <div class="modal fade" id="addschedule" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -73,7 +76,7 @@
 </div>
 
     <div class="col-sm-10 content">
-    <table class="table table-hover" data-link="row" id="tableID">
+    <table id="table" class="table table-hover" data-link="row" id="tableID">
         <thead class="black white-text">
         <tr>
             <th>Trainer</th>
@@ -86,11 +89,11 @@
         <tbody>
         <% for (var i = 0; i< result2.length; i++){%>
         <tr>
+            <td><%= result2[i][0] %></td>
             <td><%= result2[i][1] %></td>
             <td><%= result2[i][2] %></td>
             <td><%= result2[i][3] %></td>
             <td><%= result2[i][4] %></td>
-            <td><%= result2[i][5] %></td>
         </tr>
         <%}%>
         </tbody>
@@ -99,5 +102,8 @@
 
 </body>
 <script>
+    $(document).ready(function() {
+        $('#table').DataTable();
+    } );
 </script>
 </html>
